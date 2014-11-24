@@ -64,13 +64,13 @@ function init() {
 
   makeKPIGraph($('#kpi-vote'), true, [
     {
-      name: gettext('Article Votes: % Helpful'),
+      name: gettext('% Articles Voted Helpful'),
       slug: 'wiki_percent',
       func: k.Graph.fraction('kb_helpful', 'kb_votes'),
       type: 'percent'
     },
     {
-      name: gettext('Answer Votes: % Helpful'),
+      name: gettext('% Answers Voted Helpful'),
       slug: 'ans_percent',
       func: k.Graph.fraction('ans_helpful', 'ans_votes'),
       type: 'percent'
@@ -102,7 +102,7 @@ function init() {
 
   makeKPIGraph($('#kpi-ctr'), true, [
     {
-      name: gettext('Click Through Rate %'),
+      name: gettext('% Click Through Rate'),
       slug: 'ctr',
       func: k.Graph.fraction('clicks', 'searches'),
       type: 'percent'
@@ -119,17 +119,17 @@ function init() {
 
   makeKPIGraph($('#kpi-l10n'), true, [
     {
-      name: gettext('L10n Coverage'),
+      name: gettext('% L10n Coverage'),
       slug: 'l10n',
       // the api returns 0 to 100, we want 0.0 to 1.0.
-      func: function(d) { return d['coverage'] / 100; },
+      func: function(d) { return d['coverage'] + '%'; },
       type: 'percent'
     }
   ]);
 
   makeKPIGraph($('#exit-survey'), true, [
     {
-      name: gettext('Percent Yes'),
+      name: gettext('% Yes'),
       slug: 'percent_yes',
       func: k.Graph.percentage('yes', 'no', 'dont_know'),
       axisGroup: 'percent',
